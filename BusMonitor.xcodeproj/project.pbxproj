@@ -82,6 +82,7 @@
 		B5AC8CEA2458CAAA001D192F /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		B5AC8CED2458CAAA001D192F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		B5AC8CEF2458CAAA001D192F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5AC8CF72458CC11001D192F /* BusMonitor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BusMonitor.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +144,7 @@
 		B5AC8CAD2458CA64001D192F /* BusMonitor */ = {
 			isa = PBXGroup;
 			children = (
+				B5AC8CF72458CC11001D192F /* BusMonitor.entitlements */,
 				B5AC8CAE2458CA64001D192F /* AppDelegate.h */,
 				B5AC8CAF2458CA64001D192F /* AppDelegate.m */,
 				B5AC8CB12458CA64001D192F /* ViewController.h */,
@@ -279,6 +281,11 @@
 				TargetAttributes = {
 					B5AC8CAA2458CA64001D192F = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					B5AC8CC22458CA65001D192F = {
 						CreatedOnToolsVersion = 10.1;
@@ -548,6 +555,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BusMonitor/BusMonitor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TLMP25Q7PR;
 				INFOPLIST_FILE = BusMonitor/Info.plist;
@@ -565,6 +573,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BusMonitor/BusMonitor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TLMP25Q7PR;
 				INFOPLIST_FILE = BusMonitor/Info.plist;
