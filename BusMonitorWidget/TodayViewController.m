@@ -10,6 +10,7 @@
 #import <NotificationCenter/NotificationCenter.h>
 
 @interface TodayViewController () <NCWidgetProviding>
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end
 
@@ -18,6 +19,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
+    if (defaults) {
+        _label.text = (NSString *)[defaults valueForKey:@"name"];
+    }
 }
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {

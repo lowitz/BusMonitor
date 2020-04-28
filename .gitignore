@@ -1,2 +1,3 @@
-# Ignore xcuserdata
+# Ignore xcuserdata and xcshareddata
 BusMonitor.xcodeproj/xcuserdata/
+BusMonitor.xcodeproj/xcshareddata/
