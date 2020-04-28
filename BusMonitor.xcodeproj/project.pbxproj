@@ -15,6 +15,10 @@
 		B5AC8CBE2458CA65001D192F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC8CBD2458CA65001D192F /* main.m */; };
 		B5AC8CC82458CA65001D192F /* BusMonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC8CC72458CA65001D192F /* BusMonitorTests.m */; };
 		B5AC8CD32458CA65001D192F /* BusMonitorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC8CD22458CA65001D192F /* BusMonitorUITests.m */; };
+		B5AC8CE72458CAAA001D192F /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5AC8CE62458CAAA001D192F /* NotificationCenter.framework */; };
+		B5AC8CEB2458CAAA001D192F /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC8CEA2458CAAA001D192F /* TodayViewController.m */; };
+		B5AC8CEE2458CAAA001D192F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AC8CEC2458CAAA001D192F /* MainInterface.storyboard */; };
+		B5AC8CF22458CAAA001D192F /* BusMonitorWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B5AC8CE42458CAAA001D192F /* BusMonitorWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +36,28 @@
 			remoteGlobalIDString = B5AC8CAA2458CA64001D192F;
 			remoteInfo = BusMonitor;
 		};
+		B5AC8CF02458CAAA001D192F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5AC8CA32458CA64001D192F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5AC8CE32458CAAA001D192F;
+			remoteInfo = BusMonitorWidget;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B5AC8CF62458CAAA001D192F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B5AC8CF22458CAAA001D192F /* BusMonitorWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B5AC8CAB2458CA64001D192F /* BusMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +76,12 @@
 		B5AC8CCE2458CA65001D192F /* BusMonitorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BusMonitorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5AC8CD22458CA65001D192F /* BusMonitorUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BusMonitorUITests.m; sourceTree = "<group>"; };
 		B5AC8CD42458CA65001D192F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5AC8CE42458CAAA001D192F /* BusMonitorWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BusMonitorWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5AC8CE62458CAAA001D192F /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		B5AC8CE92458CAAA001D192F /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		B5AC8CEA2458CAAA001D192F /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		B5AC8CED2458CAAA001D192F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		B5AC8CEF2458CAAA001D192F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +106,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B5AC8CE12458CAAA001D192F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5AC8CE72458CAAA001D192F /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -84,6 +123,8 @@
 				B5AC8CAD2458CA64001D192F /* BusMonitor */,
 				B5AC8CC62458CA65001D192F /* BusMonitorTests */,
 				B5AC8CD12458CA65001D192F /* BusMonitorUITests */,
+				B5AC8CE82458CAAA001D192F /* BusMonitorWidget */,
+				B5AC8CE52458CAAA001D192F /* Frameworks */,
 				B5AC8CAC2458CA64001D192F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -94,6 +135,7 @@
 				B5AC8CAB2458CA64001D192F /* BusMonitor.app */,
 				B5AC8CC32458CA65001D192F /* BusMonitorTests.xctest */,
 				B5AC8CCE2458CA65001D192F /* BusMonitorUITests.xctest */,
+				B5AC8CE42458CAAA001D192F /* BusMonitorWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,6 +174,25 @@
 			path = BusMonitorUITests;
 			sourceTree = "<group>";
 		};
+		B5AC8CE52458CAAA001D192F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5AC8CE62458CAAA001D192F /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B5AC8CE82458CAAA001D192F /* BusMonitorWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B5AC8CE92458CAAA001D192F /* TodayViewController.h */,
+				B5AC8CEA2458CAAA001D192F /* TodayViewController.m */,
+				B5AC8CEC2458CAAA001D192F /* MainInterface.storyboard */,
+				B5AC8CEF2458CAAA001D192F /* Info.plist */,
+			);
+			path = BusMonitorWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -142,10 +203,12 @@
 				B5AC8CA72458CA64001D192F /* Sources */,
 				B5AC8CA82458CA64001D192F /* Frameworks */,
 				B5AC8CA92458CA64001D192F /* Resources */,
+				B5AC8CF62458CAAA001D192F /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B5AC8CF12458CAAA001D192F /* PBXTargetDependency */,
 			);
 			name = BusMonitor;
 			productName = BusMonitor;
@@ -188,6 +251,23 @@
 			productReference = B5AC8CCE2458CA65001D192F /* BusMonitorUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		B5AC8CE32458CAAA001D192F /* BusMonitorWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5AC8CF32458CAAA001D192F /* Build configuration list for PBXNativeTarget "BusMonitorWidget" */;
+			buildPhases = (
+				B5AC8CE02458CAAA001D192F /* Sources */,
+				B5AC8CE12458CAAA001D192F /* Frameworks */,
+				B5AC8CE22458CAAA001D192F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BusMonitorWidget;
+			productName = BusMonitorWidget;
+			productReference = B5AC8CE42458CAAA001D192F /* BusMonitorWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -208,6 +288,9 @@
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = B5AC8CAA2458CA64001D192F;
 					};
+					B5AC8CE32458CAAA001D192F = {
+						CreatedOnToolsVersion = 10.1;
+					};
 				};
 			};
 			buildConfigurationList = B5AC8CA62458CA64001D192F /* Build configuration list for PBXProject "BusMonitor" */;
@@ -226,6 +309,7 @@
 				B5AC8CAA2458CA64001D192F /* BusMonitor */,
 				B5AC8CC22458CA65001D192F /* BusMonitorTests */,
 				B5AC8CCD2458CA65001D192F /* BusMonitorUITests */,
+				B5AC8CE32458CAAA001D192F /* BusMonitorWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -252,6 +336,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5AC8CE22458CAAA001D192F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5AC8CEE2458CAAA001D192F /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +376,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B5AC8CE02458CAAA001D192F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5AC8CEB2458CAAA001D192F /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -296,6 +396,11 @@
 			isa = PBXTargetDependency;
 			target = B5AC8CAA2458CA64001D192F /* BusMonitor */;
 			targetProxy = B5AC8CCF2458CA65001D192F /* PBXContainerItemProxy */;
+		};
+		B5AC8CF12458CAAA001D192F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5AC8CE32458CAAA001D192F /* BusMonitorWidget */;
+			targetProxy = B5AC8CF02458CAAA001D192F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -314,6 +419,14 @@
 				B5AC8CBA2458CA65001D192F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B5AC8CEC2458CAAA001D192F /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B5AC8CED2458CAAA001D192F /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -539,6 +652,42 @@
 			};
 			name = Release;
 		};
+		B5AC8CF42458CAAA001D192F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TLMP25Q7PR;
+				INFOPLIST_FILE = BusMonitorWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = loveMowitz.BusMonitor.BusMonitorWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B5AC8CF52458CAAA001D192F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TLMP25Q7PR;
+				INFOPLIST_FILE = BusMonitorWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = loveMowitz.BusMonitor.BusMonitorWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -574,6 +723,15 @@
 			buildConfigurations = (
 				B5AC8CDE2458CA65001D192F /* Debug */,
 				B5AC8CDF2458CA65001D192F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5AC8CF32458CAAA001D192F /* Build configuration list for PBXNativeTarget "BusMonitorWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5AC8CF42458CAAA001D192F /* Debug */,
+				B5AC8CF52458CAAA001D192F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
