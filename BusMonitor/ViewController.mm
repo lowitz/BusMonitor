@@ -29,7 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _monitor = [MonitorWrapper alloc];
+    _monitor = [[MonitorWrapper alloc] init];
     [_monitor getAccessToken:^{
         dispatch_async(dispatch_get_main_queue(), ^{
             [self->_button setEnabled:YES];

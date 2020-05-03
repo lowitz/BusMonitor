@@ -26,6 +26,25 @@
 
 @implementation MonitorWrapper
 
+- (instancetype)init {
+    self = [super init];
+
+    if (self) {
+        NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
+        NSString* accessTokenRead = [defaults objectForKey:@"accessToken"];
+        if (accessTokenRead && accessTokenRead.length) {
+            _accessToken = accessTokenRead;
+        }
+
+        NSDate* accessTokenExpirationDateRead = [defaults objectForKey:@"accessTokenExpirationDate"];
+        if (accessTokenExpirationDateRead) {
+            _accesTokenExpirationDate = accessTokenExpirationDateRead;
+        }
+    }
+
+    return self;
+}
+
 - (void)getAccessToken:(void (^)())handler {
     // If current date is earlier than expiration date, we're good
     NSDate *currentDate = [NSDate date];
@@ -33,56 +52,61 @@
         handler();
         return;
     }
-    
+
     // If we don't have token or if it has expired, request a new one
     [self requestNewAccessToken:handler];
 }
 
 -(void)requestNewAccessToken:(void (^)())handler {
     NSMutableURLRequest *theRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URL_TOKEN]];
-    
+
     // Create the Method "GET" or "POST"
     [theRequest setHTTPMethod:@"POST"];
-    
+
     // Set content type
     [theRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    
+
     // Set the authorization ("key + ':' + shared secret" in base64)
     NSData *keyAndSecret = [KEY @":" SECRET
                             dataUsingEncoding:NSUTF8StringEncoding];
     NSString *base64Encoded = [keyAndSecret base64EncodedStringWithOptions:0];
     [theRequest setValue:[@"Basic " stringByAppendingString:base64Encoded] forHTTPHeaderField:@"Authorization"];
-    
+
     // Set request session with default configuration
     NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *theSession = [NSURLSession sessionWithConfiguration:sessionConfiguration];
-    
+
     // Get unique id for device and app
     UIDevice *device = [UIDevice currentDevice];
     NSString  *currentDeviceId = [[device identifierForVendor]UUIDString];
-    
+
     // Set grant type with user unique scope
     NSData *postData = [[@"grant_type=client_credentials&scope=" stringByAppendingString:currentDeviceId] dataUsingEncoding:NSUTF8StringEncoding];
     [theRequest setHTTPBody:postData];
-    
+
     // Send POST and receive token with callback
     NSURLSessionDataTask *postDataTask = [theSession dataTaskWithRequest:theRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
             if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
                 NSError *jsonError;
                 NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-                
+
                 if (jsonError) {
                     // Error parsing JSON
                     NSLog(@"Error parsing json response at token request");
                 } else {
+                    // Set up defaults for persistent data
+                    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
+
                     // Success parsing JSON
                     [self setAccessToken:(NSString*)[jsonResponse objectForKey:@"access_token"]];
-                    
+                    [defaults setValue:self->_accessToken forKey:@"accesToken"];
+
                     // Set expiration date
                     NSDate *currentDate = [NSDate date];
                     NSInteger expirationTimeSeconds = [[jsonResponse objectForKey:@"expires_in"] integerValue];
                     [self setAccesTokenExpirationDate:[currentDate dateByAddingTimeInterval:expirationTimeSeconds]];
+                    [defaults setValue:self->_accesTokenExpirationDate forKey:@"accesTokenExpirationDate"];
                     handler();
                 }
             } else {
@@ -100,7 +124,7 @@
 - (void)getLocationName:(NSString*)location handler:(void (^)(NSMutableArray* stopLocations))handler {
     NSString* percentEncodedLocation = [location stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSString *urlString = [NSString stringWithFormat:(URL_GET_BASE @"location.name?input=%@&format=json"), percentEncodedLocation];
-    
+
     // URL format is '<base-url>/<function called>?input=<location>&format=<format (JSON/xml)>'
     NSMutableURLRequest *theRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
 
@@ -109,7 +133,7 @@
 
     // Set the token
     [theRequest setValue:[@"Bearer " stringByAppendingString:_accessToken] forHTTPHeaderField:@"Authorization"];
-    
+
     // Set something? Not sure what for but it's needed
     [theRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
 
@@ -123,7 +147,7 @@
             if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
                 NSError *jsonError;
                 NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-                
+
                 if (jsonError) {
                     // Error parsing JSON
                     NSLog(@"Error parsing json response at token request");
@@ -138,7 +162,6 @@
             // Fail
             NSLog(@"Error: %@", error.description);
         }
-        
     }];
     [postDataTask resume];
 }
@@ -148,13 +171,13 @@
     // URL format is '<base-url>/<function called>?id=<stop id>&date=<YYYY-MM-DD>&time=<hh:mm>(&<Here we can put optional options, see API>)&format=json
     // Example:
     // https://api.vasttrafik.se/bin/rest.exe/v2/departureBoard?id=9021014001390000&date=2020-04-26&time=20%3A08&maxDeparturesPerLine=3&format=json
-    
+
     /* Get formated date
     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     NSLog(@"%@",[dateFormatter stringFromDate:[NSDate date]]);
     */
-    
+
 }
 
 #pragma mark - JSON parsing
@@ -166,7 +189,7 @@
     if (![jsonLocations isKindOfClass:NSArray.class]) {
         jsonLocations = [[NSArray alloc] initWithObjects:jsonLocations, nil];
     }
-    
+
     NSMutableArray* locations = [NSMutableArray arrayWithCapacity:jsonLocations.count];
     for (NSDictionary *jsonLocation in jsonLocations) {
         StopLocation *stopLocation = [StopLocation alloc];
