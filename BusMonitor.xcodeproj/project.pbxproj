@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B525C9192458DEE70052B4E4 /* MonitorWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = B525C9182458DEE70052B4E4 /* MonitorWrapper.mm */; };
+		B5723006245F22BF000A04E7 /* LocationDetailsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5723004245F22BE000A04E7 /* LocationDetailsViewController.mm */; };
 		B5AC8CB02458CA64001D192F /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5AC8CAF2458CA64001D192F /* AppDelegate.mm */; };
 		B5AC8CB32458CA64001D192F /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5AC8CB22458CA64001D192F /* ViewController.mm */; };
-		B5AC8CB62458CA64001D192F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AC8CB42458CA64001D192F /* Main.storyboard */; };
 		B5AC8CB82458CA65001D192F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5AC8CB72458CA65001D192F /* Assets.xcassets */; };
 		B5AC8CBB2458CA65001D192F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AC8CB92458CA65001D192F /* LaunchScreen.storyboard */; };
 		B5AC8CBE2458CA65001D192F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC8CBD2458CA65001D192F /* main.m */; };
@@ -21,6 +21,7 @@
 		B5AC8CEE2458CAAA001D192F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AC8CEC2458CAAA001D192F /* MainInterface.storyboard */; };
 		B5AC8CF22458CAAA001D192F /* BusMonitorWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B5AC8CE42458CAAA001D192F /* BusMonitorWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B5CF3F7F245C46E20075347D /* StopLocation.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5CF3F7E245C46E20075347D /* StopLocation.mm */; };
+		B5F44487245F21BF00160CEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AC8CB42458CA64001D192F /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		B525C9172458DEE60052B4E4 /* MonitorWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitorWrapper.h; sourceTree = "<group>"; };
 		B525C9182458DEE70052B4E4 /* MonitorWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MonitorWrapper.mm; sourceTree = "<group>"; };
 		B547DE382458D2FF0039F6B3 /* BusMonitorWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BusMonitorWidget.entitlements; sourceTree = "<group>"; };
+		B5723004245F22BE000A04E7 /* LocationDetailsViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LocationDetailsViewController.mm; sourceTree = "<group>"; };
+		B5723005245F22BE000A04E7 /* LocationDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailsViewController.h; sourceTree = "<group>"; };
 		B5AC8CAB2458CA64001D192F /* BusMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5AC8CAE2458CA64001D192F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B5AC8CAF2458CA64001D192F /* AppDelegate.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 		B5AC8CAD2458CA64001D192F /* BusMonitor */ = {
 			isa = PBXGroup;
 			children = (
+				B5723005245F22BE000A04E7 /* LocationDetailsViewController.h */,
+				B5723004245F22BE000A04E7 /* LocationDetailsViewController.mm */,
 				B5AC8CF72458CC11001D192F /* BusMonitor.entitlements */,
 				B5AC8CAE2458CA64001D192F /* AppDelegate.h */,
 				B5AC8CAF2458CA64001D192F /* AppDelegate.mm */,
@@ -343,9 +348,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5F44487245F21BF00160CEA /* Main.storyboard in Resources */,
 				B5AC8CBB2458CA65001D192F /* LaunchScreen.storyboard in Resources */,
 				B5AC8CB82458CA65001D192F /* Assets.xcassets in Resources */,
-				B5AC8CB62458CA64001D192F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +385,7 @@
 			files = (
 				B5AC8CB32458CA64001D192F /* ViewController.mm in Sources */,
 				B5AC8CBE2458CA65001D192F /* main.m in Sources */,
+				B5723006245F22BF000A04E7 /* LocationDetailsViewController.mm in Sources */,
 				B5CF3F7F245C46E20075347D /* StopLocation.mm in Sources */,
 				B525C9192458DEE70052B4E4 /* MonitorWrapper.mm in Sources */,
 				B5AC8CB02458CA64001D192F /* AppDelegate.mm in Sources */,

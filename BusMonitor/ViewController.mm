@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "MonitorWrapper.h"
 #import "StopLocation.h"
+#import "LocationDetailsViewController.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *textField;
@@ -40,6 +41,16 @@
     [super viewDidAppear:animated];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"locationSelected"]) {
+        if ([sender isKindOfClass:NSIndexPath.class]) {
+            NSIndexPath *indexPath = static_cast<NSIndexPath*>(sender);
+            auto vc = static_cast<LocationDetailsViewController*>([segue destinationViewController]);
+            [vc setLocation:[_stopLocations objectAtIndex:indexPath.row]];
+        }
+    }
+}
+
 #pragma mark - UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -58,7 +69,7 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-
+    [self performSegueWithIdentifier:@"locationSelected" sender:indexPath];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
