@@ -30,7 +30,7 @@
     self = [super init];
 
     if (self) {
-        NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
+        NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
         NSString* accessTokenRead = [defaults objectForKey:@"accessToken"];
         if (accessTokenRead && accessTokenRead.length) {
             _accessToken = accessTokenRead;
@@ -96,7 +96,7 @@
                     NSLog(@"Error parsing json response at token request");
                 } else {
                     // Set up defaults for persistent data
-                    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
+                    NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
                     
                     NSInteger tokenCounter = [defaults integerForKey:@"accessTokenCounter"];
                     [defaults setInteger:++tokenCounter forKey:@"accessTokenCounter"];

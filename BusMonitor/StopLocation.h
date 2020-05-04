@@ -13,4 +13,6 @@
 @property (strong, nonatomic) NSString* name;
 @property (nonatomic) long stopID;
 
+-(bool)isFavorite;
+
 @end

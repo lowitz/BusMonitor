@@ -126,8 +126,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NdU-mq-wjx">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NdU-mq-wjx">
                                 <rect key="frame" x="246" y="40" width="51" height="31"/>
+                                <connections>
+                                    <action selector="favoriteChanged:" destination="0Pp-zn-9UP" eventType="valueChanged" id="BGk-P5-8qT"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRp-sQ-vMG">
                                 <rect key="frame" x="16" y="45" width="213" height="21"/>
@@ -147,6 +150,7 @@
                         <viewLayoutGuide key="safeArea" id="L2g-hZ-THY"/>
                     </view>
                     <connections>
+                        <outlet property="favoriteSwitch" destination="NdU-mq-wjx" id="TeN-LN-FFr"/>
                         <outlet property="nameLabel" destination="zRp-sQ-vMG" id="XqL-Lo-KVm"/>
                     </connections>
                 </viewController>

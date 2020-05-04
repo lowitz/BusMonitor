@@ -24,7 +24,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
+    NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
     if (defaults) {
         _label.text = (NSString *)[defaults valueForKey:@"name"];
     }

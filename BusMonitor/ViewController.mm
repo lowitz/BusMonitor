@@ -26,6 +26,13 @@
     MonitorWrapper *_monitor;
 }
 
+- (NSArray*)getFavorites {
+    NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
+    //TODO: Fix
+    
+    return nil;
+}
+
 #pragma mark - UIViewController
 
 - (void)viewDidLoad {
@@ -43,7 +50,7 @@
     // Need to manually deselect cell since we're using a normal view controller
     [_stopTable deselectRowAtIndexPath:[_stopTable indexPathForSelectedRow] animated:YES];
     
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
+    NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
     NSInteger counter = [defaults integerForKey:@"accessTokenCounter"];
     [_counterLabel setText:[@(counter) stringValue]];
 }
@@ -123,7 +130,7 @@
 #pragma mark - Loading view
 
 - (void)showLoadingView {
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
+    NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
     NSInteger counter = [defaults integerForKey:@"accessTokenCounter"];
     [_counterLabel setText:[@(counter) stringValue]];
     

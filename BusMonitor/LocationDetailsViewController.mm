@@ -14,6 +14,7 @@
 @interface LocationDetailsViewController()
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *favoriteSwitch;
 
 @property (weak, nonatomic) StopLocation *stopLocation;
 
@@ -29,6 +30,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     [_nameLabel setText:[_stopLocation name]];
+    [_favoriteSwitch setOn:[_stopLocation isFavorite]];
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
@@ -39,6 +41,30 @@
 
 - (void)setLocation:(StopLocation*)location {
     _stopLocation = location;
+}
+
+- (IBAction)favoriteChanged:(UISwitch*)favoriteSwitch {
+    NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
+    NSMutableArray *favoriteStops = [NSMutableArray arrayWithArray:[defaults objectForKey:@"stopLocationFavorites"]];
+
+    bool hasChanged = false;
+    if (favoriteSwitch.isOn) {
+        [favoriteStops addObject:_stopLocation];
+        hasChanged = true;
+    } else {
+        if (favoriteStops == nil) return;
+        for (int i = 0; i < [favoriteStops count]; i++) {
+            auto stop = static_cast<StopLocation*>(favoriteStops[i]);
+            if (stop.stopID == _stopLocation.stopID) {
+                [favoriteStops removeObjectAtIndex:i];
+                hasChanged = true;
+            }
+        }
+    }
+
+    if (hasChanged) {
+        [defaults setObject:favoriteStops forKey:@"stopLocationFavorites"];
+    }
 }
 
 @end

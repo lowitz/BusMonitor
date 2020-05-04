@@ -13,4 +13,15 @@
 
 @implementation StopLocation
 
+- (bool)isFavorite {
+    NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
+    
+    NSArray* favorites = static_cast<NSArray*>([defaults objectForKey:@"stopLocationFavorites"]);
+    if (!favorites) return false;
+    for (StopLocation *location in favorites) {
+        if (location->_stopID == self->_stopID) return true;
+    }
+    return false;
+}
+
 @end
