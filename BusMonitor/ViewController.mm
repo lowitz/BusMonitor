@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIButton *button;
 @property (weak, nonatomic) IBOutlet UITableView *stopTable;
+@property (weak, nonatomic) IBOutlet UILabel *counterLabel;
 
 @property (strong, nonatomic) NSMutableArray *stopLocations;
 @property (weak, nonatomic) UIView *loadingView;
@@ -35,6 +36,16 @@
             [self->_button setEnabled:YES];
         });
     }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    // Need to manually deselect cell since we're using a normal view controller
+    [_stopTable deselectRowAtIndexPath:[_stopTable indexPathForSelectedRow] animated:YES];
+    
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
+    NSInteger counter = [defaults integerForKey:@"accessTokenCounter"];
+    [_counterLabel setText:[@(counter) stringValue]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -112,6 +123,10 @@
 #pragma mark - Loading view
 
 - (void)showLoadingView {
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
+    NSInteger counter = [defaults integerForKey:@"accessTokenCounter"];
+    [_counterLabel setText:[@(counter) stringValue]];
+    
     __block UIView* spinnerView = [[UIView alloc] initWithFrame:self.view.bounds];
     spinnerView.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];
     __block UIActivityIndicatorView *ai = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];

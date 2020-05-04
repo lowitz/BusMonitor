@@ -97,16 +97,19 @@
                 } else {
                     // Set up defaults for persistent data
                     NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
+                    
+                    NSInteger tokenCounter = [defaults integerForKey:@"accessTokenCounter"];
+                    [defaults setInteger:++tokenCounter forKey:@"accessTokenCounter"];
 
                     // Success parsing JSON
                     [self setAccessToken:(NSString*)[jsonResponse objectForKey:@"access_token"]];
-                    [defaults setValue:self->_accessToken forKey:@"accesToken"];
+                    [defaults setValue:self->_accessToken forKey:@"accessToken"];
 
                     // Set expiration date
                     NSDate *currentDate = [NSDate date];
                     NSInteger expirationTimeSeconds = [[jsonResponse objectForKey:@"expires_in"] integerValue];
                     [self setAccesTokenExpirationDate:[currentDate dateByAddingTimeInterval:expirationTimeSeconds]];
-                    [defaults setValue:self->_accesTokenExpirationDate forKey:@"accesTokenExpirationDate"];
+                    [defaults setValue:self->_accesTokenExpirationDate forKey:@"accessTokenExpirationDate"];
                     handler();
                 }
             } else {
