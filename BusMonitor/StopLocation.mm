@@ -14,14 +14,30 @@
 @implementation StopLocation
 
 - (bool)isFavorite {
-    NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
-    
-    NSArray* favorites = static_cast<NSArray*>([defaults objectForKey:@"stopLocationFavorites"]);
-    if (!favorites) return false;
-    for (StopLocation *location in favorites) {
-        if (location->_stopID == self->_stopID) return true;
-    }
     return false;
+}
+
+#pragma mark - NSCoding
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+
+    if (self) {
+        self.name = [[aDecoder decodeObjectForKey:@"name"] copy];
+        self.stopID = [aDecoder decodeIntegerForKey:@"stopID"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.name forKey:@"name"];
+    [aCoder encodeInteger:self.stopID forKey:@"stopID"];
+}
+
+#pragma mark - NSSecureCoding
+
++ (BOOL)supportsSecureCoding {
+    return YES;
 }
 
 @end

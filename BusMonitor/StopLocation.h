@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface StopLocation : NSObject
+@interface StopLocation : NSObject <NSCoding, NSSecureCoding>
 
 @property (strong, nonatomic) NSString* name;
 @property (nonatomic) long stopID;

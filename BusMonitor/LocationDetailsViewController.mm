@@ -45,7 +45,19 @@
 
 - (IBAction)favoriteChanged:(UISwitch*)favoriteSwitch {
     NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
-    NSMutableArray *favoriteStops = [NSMutableArray arrayWithArray:[defaults objectForKey:@"stopLocationFavorites"]];
+    NSData *data = [defaults objectForKey:@"stopLocationFavorites"];
+
+    NSMutableArray* favoriteStops = nil;
+    if (data != nil) {
+        NSMutableArray *tempArray = [[NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:NSMutableArray.class, StopLocation.class, nil] fromData:data error:nil] mutableCopy];
+        if (tempArray) {
+            favoriteStops = [[NSMutableArray alloc] initWithArray:tempArray];
+        } else {
+            favoriteStops = [[NSMutableArray alloc] init];
+        }
+    } else {
+        favoriteStops = [[NSMutableArray alloc] init];
+    }
 
     bool hasChanged = false;
     if (favoriteSwitch.isOn) {
@@ -63,7 +75,8 @@
     }
 
     if (hasChanged) {
-        [defaults setObject:favoriteStops forKey:@"stopLocationFavorites"];
+        NSData* archivedStops = [NSKeyedArchiver archivedDataWithRootObject:favoriteStops requiringSecureCoding:YES error:nil];
+        [defaults setObject:archivedStops forKey:@"stopLocationFavorites"];
     }
 }
 
