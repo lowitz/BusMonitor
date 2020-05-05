@@ -44,39 +44,10 @@
 }
 
 - (IBAction)favoriteChanged:(UISwitch*)favoriteSwitch {
-    NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
-    NSData *data = [defaults objectForKey:@"stopLocationFavorites"];
-
-    NSMutableArray* favoriteStops = nil;
-    if (data != nil) {
-        NSMutableArray *tempArray = [[NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:NSMutableArray.class, StopLocation.class, nil] fromData:data error:nil] mutableCopy];
-        if (tempArray) {
-            favoriteStops = [[NSMutableArray alloc] initWithArray:tempArray];
-        } else {
-            favoriteStops = [[NSMutableArray alloc] init];
-        }
-    } else {
-        favoriteStops = [[NSMutableArray alloc] init];
-    }
-
-    bool hasChanged = false;
     if (favoriteSwitch.isOn) {
-        [favoriteStops addObject:_stopLocation];
-        hasChanged = true;
+        [StopLocation addFavorite:_stopLocation];
     } else {
-        if (favoriteStops == nil) return;
-        for (int i = 0; i < [favoriteStops count]; i++) {
-            auto stop = static_cast<StopLocation*>(favoriteStops[i]);
-            if (stop.stopID == _stopLocation.stopID) {
-                [favoriteStops removeObjectAtIndex:i];
-                hasChanged = true;
-            }
-        }
-    }
-
-    if (hasChanged) {
-        NSData* archivedStops = [NSKeyedArchiver archivedDataWithRootObject:favoriteStops requiringSecureCoding:YES error:nil];
-        [defaults setObject:archivedStops forKey:@"stopLocationFavorites"];
+        [StopLocation removeFavorite:_stopLocation];
     }
 }
 

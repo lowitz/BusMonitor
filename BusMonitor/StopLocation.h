@@ -14,5 +14,8 @@
 @property (nonatomic) long stopID;
 
 -(bool)isFavorite;
++(void)addFavorite:(StopLocation*)stopLocation;
++(void)removeFavorite:(StopLocation*)stopLocation;
++(NSMutableArray*)getFavorites;
 
 @end

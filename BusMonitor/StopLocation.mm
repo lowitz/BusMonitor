@@ -14,20 +14,7 @@
 @implementation StopLocation
 
 - (bool)isFavorite {
-    NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
-    NSData *data = [defaults objectForKey:@"stopLocationFavorites"];
-
-    NSMutableArray* favoriteStops = nil;
-    if (data != nil) {
-        NSMutableArray *tempArray = [[NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:NSMutableArray.class, StopLocation.class, nil] fromData:data error:nil] mutableCopy];
-        if (tempArray) {
-            favoriteStops = [[NSMutableArray alloc] initWithArray:tempArray];
-        } else {
-            favoriteStops = [[NSMutableArray alloc] init];
-        }
-    } else {
-        favoriteStops = [[NSMutableArray alloc] init];
-    }
+    NSMutableArray* favoriteStops = [StopLocation getFavorites];
 
     for (int i = 0; i < [favoriteStops count]; i++) {
         auto stop = static_cast<StopLocation*>(favoriteStops[i]);
@@ -36,6 +23,45 @@
         }
     }
     return false;
+}
+
+#pragma mark - Utility methods for modifying favorite stops
+
++ (void)addFavorite:(StopLocation*)stopLocation {
+    NSMutableArray* favoriteStops = [StopLocation getFavorites];
+
+    [favoriteStops addObject:stopLocation];
+    NSData* archivedStops = [NSKeyedArchiver archivedDataWithRootObject:favoriteStops requiringSecureCoding:YES error:nil];
+    NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
+    [defaults setObject:archivedStops forKey:@"stopLocationFavorites"];
+}
+
++ (void)removeFavorite:(StopLocation *)stopLocation {
+    NSMutableArray* favoriteStops = [StopLocation getFavorites];
+    for (int i = 0; i < [favoriteStops count]; i++) {
+        auto stop = static_cast<StopLocation*>(favoriteStops[i]);
+        if (stop.stopID == stopLocation.stopID) {
+            [favoriteStops removeObjectAtIndex:i];
+        }
+    }
+
+    NSData* archivedStops = [NSKeyedArchiver archivedDataWithRootObject:favoriteStops requiringSecureCoding:YES error:nil];
+    NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
+    [defaults setObject:archivedStops forKey:@"stopLocationFavorites"];
+}
+
++ (NSMutableArray*)getFavorites {
+    NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
+    NSData *data = [defaults objectForKey:@"stopLocationFavorites"];
+
+    NSMutableArray* favoriteStops = [[NSMutableArray alloc] init];
+    if (data != nil) {
+        NSMutableArray *tempArray = [[NSKeyedUnarchiver unarchivedObjectOfClasses:[NSSet setWithObjects:NSMutableArray.class, StopLocation.class, nil] fromData:data error:nil] mutableCopy];
+        if (tempArray) {
+            favoriteStops = [[NSMutableArray alloc] initWithArray:tempArray];
+        }
+    }
+    return favoriteStops;
 }
 
 #pragma mark - NSCoding
