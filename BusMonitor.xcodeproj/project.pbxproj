@@ -21,6 +21,7 @@
 		B5AC8CEE2458CAAA001D192F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AC8CEC2458CAAA001D192F /* MainInterface.storyboard */; };
 		B5AC8CF22458CAAA001D192F /* BusMonitorWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B5AC8CE42458CAAA001D192F /* BusMonitorWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B5CF3F7F245C46E20075347D /* StopLocation.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5CF3F7E245C46E20075347D /* StopLocation.mm */; };
+		B5D36AC7246359FB00942BD2 /* FavoritesViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5D36AC6246359FB00942BD2 /* FavoritesViewController.mm */; };
 		B5F44487245F21BF00160CEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AC8CB42458CA64001D192F /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,8 @@
 		B5AC8CF72458CC11001D192F /* BusMonitor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BusMonitor.entitlements; sourceTree = "<group>"; };
 		B5CF3F7E245C46E20075347D /* StopLocation.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = StopLocation.mm; sourceTree = "<group>"; };
 		B5CF3F80245C46FF0075347D /* StopLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StopLocation.h; sourceTree = "<group>"; };
+		B5D36AC6246359FB00942BD2 /* FavoritesViewController.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = FavoritesViewController.mm; sourceTree = "<group>"; };
+		B5D36AC824635A0B00942BD2 /* FavoritesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +173,8 @@
 				B525C9182458DEE70052B4E4 /* MonitorWrapper.mm */,
 				B5CF3F80245C46FF0075347D /* StopLocation.h */,
 				B5CF3F7E245C46E20075347D /* StopLocation.mm */,
+				B5D36AC824635A0B00942BD2 /* FavoritesViewController.h */,
+				B5D36AC6246359FB00942BD2 /* FavoritesViewController.mm */,
 			);
 			path = BusMonitor;
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 			files = (
 				B5AC8CB32458CA64001D192F /* ViewController.mm in Sources */,
 				B5AC8CBE2458CA65001D192F /* main.m in Sources */,
+				B5D36AC7246359FB00942BD2 /* FavoritesViewController.mm in Sources */,
 				B5723006245F22BF000A04E7 /* LocationDetailsViewController.mm in Sources */,
 				B5CF3F7F245C46E20075347D /* StopLocation.mm in Sources */,
 				B525C9192458DEE70052B4E4 /* MonitorWrapper.mm in Sources */,

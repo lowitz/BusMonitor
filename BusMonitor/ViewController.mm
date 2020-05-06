@@ -26,13 +26,6 @@
     MonitorWrapper *_monitor;
 }
 
-- (NSArray*)getFavorites {
-    NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
-    //TODO: Fix
-    
-    return nil;
-}
-
 #pragma mark - UIViewController
 
 - (void)viewDidLoad {
