@@ -8,13 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class UIColor;
+
 @interface Departure : NSObject
 
 // Sign-name and color
 @property (strong, nonatomic) NSString *stroke; // Brush?
-@property (strong, nonatomic) NSString *sname; // Sign-name?
-@property (strong, nonatomic) NSString *bgColor; // UIColor?
-@property (strong, nonatomic) NSString *fgColor; // UIColor?
+@property (strong, nonatomic) NSString *sname;
+@property (strong, nonatomic) UIColor *bgColor;
+@property (strong, nonatomic) UIColor *fgColor;
 
 // What stop, departure name, type, track, direction and accessibility
 @property (nonatomic) NSInteger stopID;
@@ -33,5 +35,7 @@
 @property (nonatomic) NSInteger journeyNumber;
 @property (nonatomic) NSInteger journeyID; // Wtf is journey number then?
 @property (strong, nonatomic) NSString *journeyDetailRef;
+
+-(instancetype)initWithDictionary:(NSDictionary*)dictionary;
 
 @end

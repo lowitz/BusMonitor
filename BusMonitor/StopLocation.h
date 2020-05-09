@@ -13,6 +13,7 @@
 @property (strong, nonatomic) NSString* name;
 @property (nonatomic) long stopID;
 
+-(instancetype)initWithDictionary:(NSDictionary*)dictionary;
 -(bool)isFavorite;
 +(void)addFavorite:(StopLocation*)stopLocation;
 +(void)removeFavorite:(StopLocation*)stopLocation;

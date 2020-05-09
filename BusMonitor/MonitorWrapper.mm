@@ -241,14 +241,7 @@
 
     NSMutableArray *locations = [NSMutableArray arrayWithCapacity:jsonLocations.count];
     for (NSDictionary *jsonLocation in jsonLocations) {
-        StopLocation *stopLocation = [[StopLocation alloc] init];
-        for (NSString *key in jsonLocation.allKeys) {
-            if ([key isEqualToString:@"id"]) {
-                [stopLocation setStopID:[jsonLocation[key] integerValue]];
-            } else if ([key isEqualToString:@"name"]) {
-                [stopLocation setName:jsonLocation[key]];
-            }
-        }
+        StopLocation *stopLocation = [[StopLocation alloc] initWithDictionary:jsonLocation];
         [locations addObject:stopLocation];
     }
 
@@ -265,14 +258,8 @@
 
     NSMutableArray *departures = [NSMutableArray arrayWithCapacity:jsonDepartures.count];
     for (NSDictionary *jsonDeparture in jsonDepartures) {
-        Departure *departure = [[Departure alloc] init];
-        for (NSString *key in jsonDeparture.allKeys) {
-            // Do this for all 16(?) fields? There's got to be a better way...
-            if ([key isEqualToString:@"stroke"])
-                [departure setStroke:jsonDeparture[key]];
-            else if ([key isEqualToString:@"sname"])
-                [departure setSname:jsonDeparture[key]];
-        }
+        Departure *departure = [[Departure alloc] initWithDictionary:jsonDeparture];
+        [departures addObject:departure];
     }
 
     return departures;

@@ -13,6 +13,14 @@
 
 @implementation StopLocation
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
+    if (self = [super init]) {
+        self.stopID = [dictionary[@"id"] integerValue];
+        self.name = dictionary[@"name"];
+    }
+    return self;
+}
+
 - (bool)isFavorite {
     NSMutableArray* favoriteStops = [StopLocation getFavorites];
 
