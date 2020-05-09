@@ -10,15 +10,18 @@
 
 #import "LocationDetailsViewController.h"
 #import "StopLocation.h"
+#import "Departure.h"
 #import "MonitorWrapper.h"
 
 @interface LocationDetailsViewController()
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *favoriteSwitch;
+@property (weak, nonatomic) IBOutlet UITableView *departuresTable;
 
 @property (strong, nonatomic) StopLocation *stopLocation;
 @property (strong, nonatomic) MonitorWrapper *monitor;
+@property (strong, nonatomic) NSMutableArray *departures;
 
 @end
 
@@ -31,7 +34,8 @@
     _monitor = [[MonitorWrapper alloc] init];
     [_monitor getAccessToken:^{
         [self->_monitor getDepartureTimesForID:[self->_stopLocation stopID] date:[NSDate date] maxDeparturesPerLine:3 handler:^(NSMutableArray* departures) {
-            // Fill table with data
+            self->_departures = departures;
+            [self->_departuresTable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
         }];
     }];
 }
@@ -67,19 +71,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"departureCell" forIndexPath:indexPath];
+    Departure *departure = [_departures objectAtIndex:indexPath.row];
 
     UILabel *nameLabel = static_cast<UILabel*>([cell viewWithTag:1]);
     UILabel *timeLabel = static_cast<UILabel*>([cell viewWithTag:2]);
-    UILabel *dirLabel  = static_cast<UILabel*>([cell viewWithTag:3]);
-    [nameLabel setText:@"FillerName"];
-    [timeLabel setText:@"5"];
-    [dirLabel  setText:@"A"];
+    UILabel *trackLabel  = static_cast<UILabel*>([cell viewWithTag:3]);
+    [nameLabel setText:departure.sname];
+    [timeLabel setText:departure.rtTime];
+    [trackLabel setText:departure.track];
 
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return [_departures count];
 }
 
 #pragma mark - UITableViewDelegate

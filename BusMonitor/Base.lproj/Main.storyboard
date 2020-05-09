@@ -229,14 +229,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dir" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fq-Ev-2Oc">
-                                                    <rect key="frame" x="268" y="12" width="22" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fq-Ev-2Oc">
+                                                    <rect key="frame" x="288" y="12" width="12" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fi1-X7-Q0J">
-                                                    <rect key="frame" x="207" y="12" width="21" height="21"/>
+                                                    <rect key="frame" x="227" y="12" width="21" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -244,7 +244,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="3Fq-Ev-2Oc" firstAttribute="top" secondItem="x25-NK-mT7" secondAttribute="top" constant="12" id="9SQ-hA-6FH"/>
-                                                <constraint firstAttribute="trailing" secondItem="3Fq-Ev-2Oc" secondAttribute="trailing" constant="30" id="Pw8-Bm-QwV"/>
+                                                <constraint firstAttribute="trailing" secondItem="3Fq-Ev-2Oc" secondAttribute="trailing" constant="20" id="Pw8-Bm-QwV"/>
                                                 <constraint firstItem="3Fq-Ev-2Oc" firstAttribute="leading" secondItem="Fi1-X7-Q0J" secondAttribute="trailing" constant="40" id="bdm-10-nhs"/>
                                                 <constraint firstItem="7c8-w4-hT1" firstAttribute="top" secondItem="x25-NK-mT7" secondAttribute="top" constant="12" id="jb8-g9-Mew"/>
                                                 <constraint firstItem="Fi1-X7-Q0J" firstAttribute="top" secondItem="x25-NK-mT7" secondAttribute="top" constant="12" id="sFz-SP-CVH"/>
@@ -265,14 +265,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Direction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xY0-YX-uHa">
-                                <rect key="frame" x="260" y="88" width="44" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next (min)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enY-sp-rXH">
+                                <rect key="frame" x="195" y="88" width="51" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next (min)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enY-sp-rXH">
-                                <rect key="frame" x="195" y="88" width="51" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xY0-YX-uHa">
+                                <rect key="frame" x="277" y="88" width="27" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -289,8 +289,8 @@
                             <constraint firstItem="xY0-YX-uHa" firstAttribute="top" secondItem="zRp-sQ-vMG" secondAttribute="bottom" constant="22" id="Lxd-hM-gHF"/>
                             <constraint firstItem="NdU-mq-wjx" firstAttribute="top" secondItem="L2g-hZ-THY" secondAttribute="top" constant="20" id="MAF-pp-cXw"/>
                             <constraint firstItem="1J8-cM-JSu" firstAttribute="top" secondItem="XSc-nM-Pi5" secondAttribute="bottom" constant="8" id="Rb4-NV-Te3"/>
-                            <constraint firstItem="xY0-YX-uHa" firstAttribute="leading" secondItem="enY-sp-rXH" secondAttribute="trailing" constant="14" id="VLO-ac-Wa6"/>
-                            <constraint firstItem="L2g-hZ-THY" firstAttribute="trailing" secondItem="xY0-YX-uHa" secondAttribute="trailing" constant="16" id="aIZ-Nq-nBp"/>
+                            <constraint firstItem="L2g-hZ-THY" firstAttribute="trailing" secondItem="xY0-YX-uHa" secondAttribute="trailing" constant="16" id="Udh-sw-Oam"/>
+                            <constraint firstItem="xY0-YX-uHa" firstAttribute="leading" secondItem="enY-sp-rXH" secondAttribute="trailing" constant="31" id="VLO-ac-Wa6"/>
                             <constraint firstItem="1J8-cM-JSu" firstAttribute="leading" secondItem="L2g-hZ-THY" secondAttribute="leading" id="c3a-cu-KQm"/>
                             <constraint firstItem="L2g-hZ-THY" firstAttribute="bottom" secondItem="1J8-cM-JSu" secondAttribute="bottom" id="m5w-aA-OED"/>
                             <constraint firstItem="NdU-mq-wjx" firstAttribute="leading" secondItem="zRp-sQ-vMG" secondAttribute="trailing" constant="17" id="skg-hu-JPd"/>
@@ -300,6 +300,7 @@
                         <viewLayoutGuide key="safeArea" id="L2g-hZ-THY"/>
                     </view>
                     <connections>
+                        <outlet property="departuresTable" destination="1J8-cM-JSu" id="8j6-XV-9do"/>
                         <outlet property="favoriteSwitch" destination="NdU-mq-wjx" id="TeN-LN-FFr"/>
                         <outlet property="nameLabel" destination="zRp-sQ-vMG" id="XqL-Lo-KVm"/>
                     </connections>
