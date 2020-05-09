@@ -51,4 +51,33 @@
     }
 }
 
+#pragma mark - UITableViewDataSource
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"departureCell" forIndexPath:indexPath];
+
+    UILabel *nameLabel = static_cast<UILabel*>([cell viewWithTag:1]);
+    UILabel *timeLabel = static_cast<UILabel*>([cell viewWithTag:2]);
+    UILabel *dirLabel  = static_cast<UILabel*>([cell viewWithTag:3]);
+    [nameLabel setText:@"FillerName"];
+    [timeLabel setText:@"5"];
+    [dirLabel  setText:@"A"];
+
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 2;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44.0f;
+}
+
 @end
