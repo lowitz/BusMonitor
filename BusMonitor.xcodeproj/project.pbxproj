@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B525C9192458DEE70052B4E4 /* MonitorWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = B525C9182458DEE70052B4E4 /* MonitorWrapper.mm */; };
+		B56181DA2466C37B00AA222E /* Departure.mm in Sources */ = {isa = PBXBuildFile; fileRef = B56181D92466C37B00AA222E /* Departure.mm */; };
 		B5723006245F22BF000A04E7 /* LocationDetailsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5723004245F22BE000A04E7 /* LocationDetailsViewController.mm */; };
 		B5AC8CB02458CA64001D192F /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5AC8CAF2458CA64001D192F /* AppDelegate.mm */; };
 		B5AC8CB32458CA64001D192F /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5AC8CB22458CA64001D192F /* ViewController.mm */; };
@@ -67,6 +68,8 @@
 		B525C9172458DEE60052B4E4 /* MonitorWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonitorWrapper.h; sourceTree = "<group>"; };
 		B525C9182458DEE70052B4E4 /* MonitorWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MonitorWrapper.mm; sourceTree = "<group>"; };
 		B547DE382458D2FF0039F6B3 /* BusMonitorWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BusMonitorWidget.entitlements; sourceTree = "<group>"; };
+		B56181D92466C37B00AA222E /* Departure.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = Departure.mm; sourceTree = "<group>"; };
+		B56181DB2466C39500AA222E /* Departure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Departure.h; sourceTree = "<group>"; };
 		B5723004245F22BE000A04E7 /* LocationDetailsViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LocationDetailsViewController.mm; sourceTree = "<group>"; };
 		B5723005245F22BE000A04E7 /* LocationDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailsViewController.h; sourceTree = "<group>"; };
 		B5AC8CAB2458CA64001D192F /* BusMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +176,8 @@
 				B525C9182458DEE70052B4E4 /* MonitorWrapper.mm */,
 				B5CF3F80245C46FF0075347D /* StopLocation.h */,
 				B5CF3F7E245C46E20075347D /* StopLocation.mm */,
+				B56181DB2466C39500AA222E /* Departure.h */,
+				B56181D92466C37B00AA222E /* Departure.mm */,
 				B5D36AC824635A0B00942BD2 /* FavoritesViewController.h */,
 				B5D36AC6246359FB00942BD2 /* FavoritesViewController.mm */,
 			);
@@ -390,6 +395,7 @@
 			files = (
 				B5AC8CB32458CA64001D192F /* ViewController.mm in Sources */,
 				B5AC8CBE2458CA65001D192F /* main.m in Sources */,
+				B56181DA2466C37B00AA222E /* Departure.mm in Sources */,
 				B5D36AC7246359FB00942BD2 /* FavoritesViewController.mm in Sources */,
 				B5723006245F22BF000A04E7 /* LocationDetailsViewController.mm in Sources */,
 				B5CF3F7F245C46E20075347D /* StopLocation.mm in Sources */,
