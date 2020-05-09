@@ -146,6 +146,7 @@
 
     // Send POST and receive token with callback
     NSURLSessionDataTask *postDataTask = [theSession dataTaskWithRequest:theRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSMutableArray *stopLocations = nil;
         if (!error) {
             if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
                 NSError *jsonError;
@@ -155,8 +156,7 @@
                     // Error parsing JSON
                     NSLog(@"Error parsing json response at token request");
                 } else {
-                    NSMutableArray *stopLocations = [self parseLocations:jsonResponse];
-                    handler(stopLocations);
+                    stopLocations = [self parseLocations:jsonResponse];
                 }
             } else {
                 // Server is returning an error
@@ -165,6 +165,7 @@
             // Fail
             NSLog(@"Error: %@", error.description);
         }
+        handler(stopLocations);
     }];
     [postDataTask resume];
 }
