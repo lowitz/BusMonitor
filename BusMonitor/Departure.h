@@ -11,8 +11,8 @@
 @interface Departure : NSObject
 
 // Sign-name and color
-@property (strong, nonatomic) NSString *sname; // Sign-name?
 @property (strong, nonatomic) NSString *stroke; // Brush?
+@property (strong, nonatomic) NSString *sname; // Sign-name?
 @property (strong, nonatomic) NSString *bgColor; // UIColor?
 @property (strong, nonatomic) NSString *fgColor; // UIColor?
 

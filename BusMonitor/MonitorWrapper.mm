@@ -8,6 +8,7 @@
 
 #import "MonitorWrapper.h"
 #import "StopLocation.h"
+#import "Departure.h"
 #import <UIKit/UIDevice.h>
 
 #define KEY @"8aOzt2RmMIG0OXSyIgjM2IkHvAoa" // Sample credentials
@@ -238,9 +239,9 @@
         jsonLocations = [[NSArray alloc] initWithObjects:jsonLocations, nil];
     }
 
-    NSMutableArray* locations = [NSMutableArray arrayWithCapacity:jsonLocations.count];
+    NSMutableArray *locations = [NSMutableArray arrayWithCapacity:jsonLocations.count];
     for (NSDictionary *jsonLocation in jsonLocations) {
-        StopLocation *stopLocation = [StopLocation alloc];
+        StopLocation *stopLocation = [[StopLocation alloc] init];
         for (NSString *key in jsonLocation.allKeys) {
             if ([key isEqualToString:@"id"]) {
                 [stopLocation setStopID:[jsonLocation[key] integerValue]];
@@ -256,8 +257,25 @@
 
 - (NSMutableArray*)parseDepartures:(NSDictionary *)jsonResponse {
     NSArray *jsonDepartures = jsonResponse[@"DepartureBoard"][@"Departure"];
+    // If the response only contains one element it does not contain an array of dictionaries, just a dictionary
+    // Cast to array
+    if (![jsonDepartures isKindOfClass:NSArray.class]) {
+        jsonDepartures = [[NSArray alloc] initWithObjects:jsonDepartures, nil];
+    }
 
-    return nil;
+    NSMutableArray *departures = [NSMutableArray arrayWithCapacity:jsonDepartures.count];
+    for (NSDictionary *jsonDeparture in jsonDepartures) {
+        Departure *departure = [[Departure alloc] init];
+        for (NSString *key in jsonDeparture.allKeys) {
+            // Do this for all 16(?) fields? There's got to be a better way...
+            if ([key isEqualToString:@"stroke"])
+                [departure setStroke:jsonDeparture[key]];
+            else if ([key isEqualToString:@"sname"])
+                [departure setSname:jsonDeparture[key]];
+        }
+    }
+
+    return departures;
 }
 
 
