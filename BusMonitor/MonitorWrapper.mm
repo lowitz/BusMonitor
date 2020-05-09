@@ -124,8 +124,8 @@
     [postDataTask resume];
 }
 
-- (void)getLocationName:(NSString*)location handler:(void (^)(NSMutableArray* stopLocations))handler {
-    NSString* percentEncodedLocation = [location stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+- (void)getLocationName:(NSString*)search handler:(void (^)(NSMutableArray* stopLocations))handler {
+    NSString* percentEncodedLocation = [search stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSString *urlString = [NSString stringWithFormat:(URL_GET_BASE @"location.name?input=%@&format=json"), percentEncodedLocation];
 
     // URL format is '<base-url>/<function called>?input=<location>&format=<format (JSON/xml)>'
@@ -170,18 +170,62 @@
     [postDataTask resume];
 }
 
-- (void)getDepartureTimes {
-    // OBS! Hours and minutes in the request should be separated by the string "%3A", not a literal ":"
+- (void)getDepartureTimesForID:(NSInteger)stopID date:(NSDate*)date maxDeparturesPerLine:(NSInteger)maxDeparturesPerLine handler:(void (^)(NSMutableArray* departures))handler {
+    // OBS! Everything in the link, even time, should of course be percent encoded
     // URL format is '<base-url>/<function called>?id=<stop id>&date=<YYYY-MM-DD>&time=<hh:mm>(&<Here we can put optional options, see API>)&format=json
     // Example:
     // https://api.vasttrafik.se/bin/rest.exe/v2/departureBoard?id=9021014001390000&date=2020-04-26&time=20%3A08&maxDeparturesPerLine=3&format=json
 
-    /* Get formated date
     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-    NSLog(@"%@",[dateFormatter stringFromDate:[NSDate date]]);
-    */
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString* percentEncodedDate = [dateFormatter stringFromDate:date];
+    [dateFormatter setDateFormat:@"HH:mm"];
+    NSCharacterSet *customCharacterset = [[NSCharacterSet characterSetWithCharactersInString:@":"] invertedSet];
+    NSString* percentEncodedTime = [[dateFormatter stringFromDate:date] stringByAddingPercentEncodingWithAllowedCharacters:customCharacterset];
 
+    NSString *urlString = [NSString stringWithFormat:(URL_GET_BASE @"departureBoard?id=%@&date=%@&time=%@&maxDeparturesPerLine=%@&format=json"),
+                           [@(stopID) stringValue], percentEncodedDate, percentEncodedTime, [@(maxDeparturesPerLine) stringValue]];
+
+
+    NSMutableURLRequest *theRequest = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
+
+    // Create the Method "GET" or "POST"
+    [theRequest setHTTPMethod:@"GET"];
+
+    // Set the token
+    [theRequest setValue:[@"Bearer " stringByAppendingString:_accessToken] forHTTPHeaderField:@"Authorization"];
+
+    // Set something? Not sure what for but it's needed
+    [theRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+
+    // Send request
+    NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *theSession = [NSURLSession sessionWithConfiguration:sessionConfiguration];
+
+    // Send POST and receive token with callback
+    NSURLSessionDataTask *postDataTask = [theSession dataTaskWithRequest:theRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSMutableArray *departures = nil;
+        if (!error) {
+            if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                NSError *jsonError;
+                NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+
+                if (jsonError) {
+                    // Error parsing JSON
+                    NSLog(@"Error parsing json response at token request");
+                } else {
+                    departures = [self parseDepartures:jsonResponse];
+                }
+            } else {
+                // Server is returning an error
+            }
+        } else {
+            // Fail
+            NSLog(@"Error: %@", error.description);
+        }
+        handler(departures);
+    }];
+    [postDataTask resume];
 }
 
 #pragma mark - JSON parsing
@@ -208,6 +252,12 @@
     }
 
     return  locations;
+}
+
+- (NSMutableArray*)parseDepartures:(NSDictionary *)jsonResponse {
+    NSArray *jsonDepartures = jsonResponse[@"DepartureBoard"][@"Departure"];
+
+    return nil;
 }
 
 

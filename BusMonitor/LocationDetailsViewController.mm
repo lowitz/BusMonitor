@@ -10,13 +10,15 @@
 
 #import "LocationDetailsViewController.h"
 #import "StopLocation.h"
+#import "MonitorWrapper.h"
 
 @interface LocationDetailsViewController()
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *favoriteSwitch;
 
-@property (weak, nonatomic) StopLocation *stopLocation;
+@property (strong, nonatomic) StopLocation *stopLocation;
+@property (strong, nonatomic) MonitorWrapper *monitor;
 
 @end
 
@@ -24,11 +26,21 @@
 
 #pragma mark - UIViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    _monitor = [[MonitorWrapper alloc] init];
+    [_monitor getAccessToken:^{
+        [self->_monitor getDepartureTimesForID:[self->_stopLocation stopID] date:[NSDate date] maxDeparturesPerLine:3 handler:^(NSMutableArray* departures) {
+            // Fill table with data
+        }];
+    }];
+}
+
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     // Show navigation bar since set to hidden
     [self.navigationController setNavigationBarHidden:NO animated:YES];
-    
+
     [_nameLabel setText:[_stopLocation name]];
     [_favoriteSwitch setOn:[_stopLocation isFavorite]];
 }

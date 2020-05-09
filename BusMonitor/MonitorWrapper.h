@@ -14,6 +14,6 @@
 
 -(void)getAccessToken:(void (^)(void))handler;
 -(void)getLocationName:(NSString*)location handler:(void (^)(NSMutableArray* stopLocations))handler;
--(void)getDepartureTimes;
+-(void)getDepartureTimesForID:(NSInteger)stopID date:(NSDate*)date maxDeparturesPerLine:(NSInteger)maxDeparturesPerLine handler:(void (^)(NSMutableArray* departures))handler;
 
 @end
