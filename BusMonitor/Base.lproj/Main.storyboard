@@ -212,12 +212,63 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1J8-cM-JSu">
+                                <rect key="frame" x="0.0" y="89" width="320" height="479"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="mpk-id-NlU">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mpk-id-NlU" id="x25-NK-mT7">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7c8-w4-hT1">
+                                                    <rect key="frame" x="15" y="11" width="45" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Departure time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fi1-X7-Q0J">
+                                                    <rect key="frame" x="142" y="11" width="115.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dir" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fq-Ev-2Oc">
+                                                    <rect key="frame" x="283" y="12" width="22" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3Fq-Ev-2Oc" firstAttribute="top" secondItem="x25-NK-mT7" secondAttribute="top" constant="12" id="9SQ-hA-6FH"/>
+                                                <constraint firstItem="Fi1-X7-Q0J" firstAttribute="leading" secondItem="7c8-w4-hT1" secondAttribute="trailing" constant="82" id="bDT-Ie-BjD"/>
+                                                <constraint firstItem="3Fq-Ev-2Oc" firstAttribute="leading" secondItem="Fi1-X7-Q0J" secondAttribute="trailing" constant="25.5" id="htb-kY-0a5"/>
+                                                <constraint firstItem="7c8-w4-hT1" firstAttribute="top" secondItem="x25-NK-mT7" secondAttribute="top" constant="11" id="jb8-g9-Mew"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3Fq-Ev-2Oc" secondAttribute="trailing" constant="15" id="rOn-1u-LyY"/>
+                                                <constraint firstItem="Fi1-X7-Q0J" firstAttribute="top" secondItem="x25-NK-mT7" secondAttribute="top" constant="11" id="sFz-SP-CVH"/>
+                                                <constraint firstItem="7c8-w4-hT1" firstAttribute="leading" secondItem="x25-NK-mT7" secondAttribute="leading" constant="15" id="vE9-jS-BDx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="0Pp-zn-9UP" id="GTI-tX-bb4"/>
+                                    <outlet property="delegate" destination="0Pp-zn-9UP" id="Ocz-aB-1iF"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="L2g-hZ-THY" firstAttribute="trailing" secondItem="NdU-mq-wjx" secondAttribute="trailing" constant="25" id="0i3-k0-87h"/>
+                            <constraint firstItem="L2g-hZ-THY" firstAttribute="trailing" secondItem="1J8-cM-JSu" secondAttribute="trailing" id="ItK-MF-5s4"/>
                             <constraint firstItem="zRp-sQ-vMG" firstAttribute="leading" secondItem="L2g-hZ-THY" secondAttribute="leading" constant="16" id="KBa-yb-zy7"/>
                             <constraint firstItem="NdU-mq-wjx" firstAttribute="top" secondItem="L2g-hZ-THY" secondAttribute="top" constant="20" id="MAF-pp-cXw"/>
+                            <constraint firstItem="1J8-cM-JSu" firstAttribute="leading" secondItem="L2g-hZ-THY" secondAttribute="leading" id="c3a-cu-KQm"/>
+                            <constraint firstItem="1J8-cM-JSu" firstAttribute="top" secondItem="zRp-sQ-vMG" secondAttribute="bottom" constant="23" id="chF-S9-QxS"/>
+                            <constraint firstItem="L2g-hZ-THY" firstAttribute="bottom" secondItem="1J8-cM-JSu" secondAttribute="bottom" id="m5w-aA-OED"/>
                             <constraint firstItem="NdU-mq-wjx" firstAttribute="leading" secondItem="zRp-sQ-vMG" secondAttribute="trailing" constant="17" id="skg-hu-JPd"/>
                             <constraint firstItem="zRp-sQ-vMG" firstAttribute="top" secondItem="L2g-hZ-THY" secondAttribute="top" constant="25" id="u92-HY-osv"/>
                         </constraints>
@@ -230,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3il-MP-jxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="971" y="-931"/>
+            <point key="canvasLocation" x="969.375" y="-931.69014084507046"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
