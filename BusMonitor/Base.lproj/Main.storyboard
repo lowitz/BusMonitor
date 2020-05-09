@@ -72,6 +72,7 @@
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="KeY-yg-XMQ"/>
                     <connections>
                         <outlet property="tableView" destination="QAY-6q-nZp" id="hhN-Ob-heQ"/>
+                        <segue destination="0Pp-zn-9UP" kind="show" identifier="locationSelected" id="q5y-Ka-rvr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ef7-Hg-R6T" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -229,7 +230,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3il-MP-jxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1037" y="-574"/>
+            <point key="canvasLocation" x="971" y="-931"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="q5y-Ka-rvr"/>
+    </inferredMetricsTieBreakers>
 </document>
