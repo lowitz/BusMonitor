@@ -11,7 +11,7 @@
 
 @implementation Departure
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
+- (instancetype)initWithDictionary:(NSDictionary*)dictionary {
     if (self = [super init]) {
          // Sign-name and color
         self.stroke  = dictionary[@"stroke"];
@@ -31,9 +31,10 @@
          // Departure time
         self.rtTime = dictionary[@"rtTime"];
         self.time   = dictionary[@"time"];
+        self.rtDate = dictionary[@"rtDate"];
+        self.date   = dictionary[@"date"];
 
          // Journey details
-        self.journeyNumber    = [dictionary[@"journeyNumber"] integerValue];
         self.journeyID        = [dictionary[@"journeyid"] integerValue];
         self.journeyDetailRef = dictionary[@"JourneyDetailRef"][@"ref"];
     }
@@ -41,9 +42,29 @@
 }
 
 
+#pragma mark - Departure time utility method
+- (NSString*)departsInMin {
+    NSDate *currentDate = [NSDate date];
+
+    // Assumes date is in format YYYY-MM-DD and time in format hh:mm
+    NSString *departureDateString = [NSString stringWithFormat:@"%@T%@", self.rtDate ? self.rtDate : self.date, self.rtTime ? self.rtTime : self.time];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"YYYY-MM-dd'T'HH:mm"];
+    [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"Europe/Stockholm"]];
+    NSDate *departureDate = [dateFormat dateFromString:departureDateString];
+
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute
+                                               fromDate:currentDate
+                                                 toDate:departureDate
+                                                options:0];
+    NSInteger timeMinutes = components.day * 1440 + components.hour * 60 + components.minute;
+    return timeMinutes <= 0 ? @"Nu" : [@(timeMinutes) stringValue];
+}
+
 #pragma mark - Color import utility method
 // Assumes input like "#00FF00" (#RRGGBB). Might want to move to some support header file
-+ (UIColor *)colorFromHexString:(NSString *)hexString {
++ (UIColor*)colorFromHexString:(NSString*)hexString {
     unsigned rgbValue = 0;
     NSScanner *scanner = [NSScanner scannerWithString:hexString];
     [scanner setScanLocation:1]; // bypass '#' character

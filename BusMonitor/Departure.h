@@ -22,20 +22,22 @@
 @property (nonatomic) NSInteger stopID;
 @property (strong, nonatomic) NSString *stopName;
 @property (strong, nonatomic) NSString *departureName; // Full name
-@property (strong, nonatomic) NSString *type; // Bus, tram, etc.
+@property (strong, nonatomic) NSString *type; // VAS, LDT (Long Distance Train), REG (Regional train), BUS, BOAT, TRAM, TAXI (Taxi/Telebus)
 @property (strong, nonatomic) NSString *track;
 @property (strong, nonatomic) NSString *direction;
-@property (strong, nonatomic) NSString *accessibility;
+@property (strong, nonatomic) NSString *accessibility; // = ["wheelChair" or "lowFloor"] if set
 
 // Departure time
-@property (strong, nonatomic) NSString *rtTime; // rt? Is this the estimated time?
+@property (strong, nonatomic) NSString *rtTime; // Real time time (hh:mm) (if available)
 @property (strong, nonatomic) NSString *time;
+@property (strong, nonatomic) NSString *rtDate; // Real time date (YYYY-MM-DD) (if available)
+@property (strong, nonatomic) NSString *date;
 
 // Journey details
-@property (nonatomic) NSInteger journeyNumber;
-@property (nonatomic) NSInteger journeyID; // Wtf is journey number then?
+@property (nonatomic) NSInteger journeyID;
 @property (strong, nonatomic) NSString *journeyDetailRef;
 
 -(instancetype)initWithDictionary:(NSDictionary*)dictionary;
+-(NSString*)departsInMin;
 
 @end
