@@ -21,6 +21,7 @@
 		B5AC8CEB2458CAAA001D192F /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5AC8CEA2458CAAA001D192F /* TodayViewController.m */; };
 		B5AC8CEE2458CAAA001D192F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AC8CEC2458CAAA001D192F /* MainInterface.storyboard */; };
 		B5AC8CF22458CAAA001D192F /* BusMonitorWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B5AC8CE42458CAAA001D192F /* BusMonitorWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B5B114C3247693CA003154DD /* InsetLabel.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5B114C2247693CA003154DD /* InsetLabel.mm */; };
 		B5CF3F7F245C46E20075347D /* StopLocation.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5CF3F7E245C46E20075347D /* StopLocation.mm */; };
 		B5D36AC7246359FB00942BD2 /* FavoritesViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5D36AC6246359FB00942BD2 /* FavoritesViewController.mm */; };
 		B5F44487245F21BF00160CEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5AC8CB42458CA64001D192F /* Main.storyboard */; };
@@ -95,6 +96,8 @@
 		B5AC8CED2458CAAA001D192F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		B5AC8CEF2458CAAA001D192F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5AC8CF72458CC11001D192F /* BusMonitor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BusMonitor.entitlements; sourceTree = "<group>"; };
+		B5B114C2247693CA003154DD /* InsetLabel.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = InsetLabel.mm; sourceTree = "<group>"; };
+		B5B114C4247694FD003154DD /* InsetLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InsetLabel.h; sourceTree = "<group>"; };
 		B5CF3F7E245C46E20075347D /* StopLocation.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = StopLocation.mm; sourceTree = "<group>"; };
 		B5CF3F80245C46FF0075347D /* StopLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StopLocation.h; sourceTree = "<group>"; };
 		B5D36AC6246359FB00942BD2 /* FavoritesViewController.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = FavoritesViewController.mm; sourceTree = "<group>"; };
@@ -160,6 +163,7 @@
 		B5AC8CAD2458CA64001D192F /* BusMonitor */ = {
 			isa = PBXGroup;
 			children = (
+				B5B114C1247693AE003154DD /* UIHelpers */,
 				B5723005245F22BE000A04E7 /* LocationDetailsViewController.h */,
 				B5723004245F22BE000A04E7 /* LocationDetailsViewController.mm */,
 				B5AC8CF72458CC11001D192F /* BusMonitor.entitlements */,
@@ -220,6 +224,15 @@
 				B5AC8CEF2458CAAA001D192F /* Info.plist */,
 			);
 			path = BusMonitorWidget;
+			sourceTree = "<group>";
+		};
+		B5B114C1247693AE003154DD /* UIHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				B5B114C4247694FD003154DD /* InsetLabel.h */,
+				B5B114C2247693CA003154DD /* InsetLabel.mm */,
+			);
+			path = UIHelpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,6 +408,7 @@
 			files = (
 				B5AC8CB32458CA64001D192F /* ViewController.mm in Sources */,
 				B5AC8CBE2458CA65001D192F /* main.m in Sources */,
+				B5B114C3247693CA003154DD /* InsetLabel.mm in Sources */,
 				B56181DA2466C37B00AA222E /* Departure.mm in Sources */,
 				B5D36AC7246359FB00942BD2 /* FavoritesViewController.mm in Sources */,
 				B5723006245F22BF000A04E7 /* LocationDetailsViewController.mm in Sources */,

@@ -77,6 +77,8 @@
     UILabel *timeLabel = static_cast<UILabel*>([cell viewWithTag:2]);
     UILabel *trackLabel  = static_cast<UILabel*>([cell viewWithTag:3]);
     [nameLabel setText:departure.sname];
+    [nameLabel setBackgroundColor:departure.bgColor];
+    [nameLabel setTextColor:departure.fgColor];
     [timeLabel setText:departure.rtTime];
     [trackLabel setText:departure.track];
 
