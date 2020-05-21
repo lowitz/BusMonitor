@@ -12,6 +12,7 @@
 #import "StopLocation.h"
 #import "Departure.h"
 #import "MonitorWrapper.h"
+#import "DepartureCell.h"
 
 @interface LocationDetailsViewController()
 
@@ -70,19 +71,14 @@
 #pragma mark - UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"departureCell" forIndexPath:indexPath];
+    DepartureCell *departureCell = static_cast<DepartureCell*>([tableView dequeueReusableCellWithIdentifier:@"departureCell" forIndexPath:indexPath]);
     Departure *departure = [_departures objectAtIndex:indexPath.row];
 
-    UILabel *nameLabel = static_cast<UILabel*>([cell viewWithTag:1]);
-    UILabel *timeLabel = static_cast<UILabel*>([cell viewWithTag:2]);
-    UILabel *trackLabel  = static_cast<UILabel*>([cell viewWithTag:3]);
-    [nameLabel setText:departure.sname];
-    [nameLabel setBackgroundColor:departure.bgColor];
-    [nameLabel setTextColor:departure.fgColor];
-    [timeLabel setText:departure.rtTime];
-    [trackLabel setText:departure.track];
+    [departureCell setNameLabelText:departure.sname withTextColor:departure.fgColor withBackgroundColor:departure.bgColor];
+    [departureCell setTimeLabelText:departure.time];
+    [departureCell setTrackLabelText:departure.track];
 
-    return cell;
+    return departureCell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -16,7 +16,7 @@
          // Sign-name and color
         self.stroke  = dictionary[@"stroke"];
         self.sname   = dictionary[@"sname"];
-        self.bgColor = [Departure colorFromHexString:dictionary[@"fgColor"]];
+        self.bgColor = [Departure colorFromHexString:dictionary[@"fgColor"]]; // Don't know why but foreground and background colors seem to be switched in the response
         self.fgColor = [Departure colorFromHexString:dictionary[@"bgColor"]];
 
          // What stop, departure name, type, track, direction and accessibility
