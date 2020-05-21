@@ -10,7 +10,8 @@
 
 @interface DepartureCell()
 
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *signLabel;
+@property (weak, nonatomic) IBOutlet UILabel *directionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *trackLabel;
 
@@ -18,10 +19,14 @@
 
 @implementation DepartureCell
 
-- (void)setNameLabelText:(NSString *)text withTextColor:(UIColor *)fg withBackgroundColor:(UIColor *)bg {
-    [_nameLabel setText:text];
-    [_nameLabel setTextColor:fg];
-    [_nameLabel setBackgroundColor:bg];
+- (void)setSignLabelText:(NSString *)text withTextColor:(UIColor *)fg withBackgroundColor:(UIColor *)bg {
+    [_signLabel setText:text];
+    [_signLabel setTextColor:fg];
+    [_signLabel setBackgroundColor:bg];
+}
+
+- (void)setDirectionLabelText:(NSString *)text {
+    [_directionLabel setText:text];
 }
 
 - (void)setTimeLabelText:(NSString *)text {

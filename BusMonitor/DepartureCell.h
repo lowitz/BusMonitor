@@ -10,7 +10,8 @@
 
 @interface DepartureCell : UITableViewCell
 
--(void)setNameLabelText:(NSString*)text withTextColor:(UIColor*)fg withBackgroundColor:(UIColor*)bg;
+-(void)setSignLabelText:(NSString*)text withTextColor:(UIColor*)fg withBackgroundColor:(UIColor*)bg;
+-(void)setDirectionLabelText:(NSString*)text;
 -(void)setTimeLabelText:(NSString*)text;
 -(void)setTrackLabelText:(NSString*)text;
 

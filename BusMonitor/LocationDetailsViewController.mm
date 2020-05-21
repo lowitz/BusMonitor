@@ -74,8 +74,9 @@
     DepartureCell *departureCell = static_cast<DepartureCell*>([tableView dequeueReusableCellWithIdentifier:@"departureCell" forIndexPath:indexPath]);
     Departure *departure = [_departures objectAtIndex:indexPath.row];
 
-    [departureCell setNameLabelText:departure.sname withTextColor:departure.fgColor withBackgroundColor:departure.bgColor];
-    [departureCell setTimeLabelText:departure.time];
+    [departureCell setSignLabelText:departure.sname withTextColor:departure.fgColor withBackgroundColor:departure.bgColor];
+    [departureCell setDirectionLabelText:departure.direction];
+    [departureCell setTimeLabelText:departure.departsInMin];
     [departureCell setTrackLabelText:departure.track];
 
     return departureCell;
