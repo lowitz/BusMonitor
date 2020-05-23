@@ -42,10 +42,6 @@
     [super viewWillAppear:animated];
     // Need to manually deselect cell since we're using a normal view controller
     [_stopTable deselectRowAtIndexPath:[_stopTable indexPathForSelectedRow] animated:YES];
-    
-    NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
-    NSInteger counter = [defaults integerForKey:@"accessTokenCounter"];
-    [_counterLabel setText:[@(counter) stringValue]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -123,10 +119,6 @@
 #pragma mark - Loading view
 
 - (void)showLoadingView {
-    NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
-    NSInteger counter = [defaults integerForKey:@"accessTokenCounter"];
-    [_counterLabel setText:[@(counter) stringValue]];
-    
     __block UIView* spinnerView = [[UIView alloc] initWithFrame:self.view.bounds];
     spinnerView.backgroundColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];
     __block UIActivityIndicatorView *ai = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];

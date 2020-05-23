@@ -153,25 +153,16 @@
                                     <action selector="buttonTapp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5gj-Xe-1iB"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFG-EE-yKI">
-                                <rect key="frame" x="16" y="20" width="29" height="14"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="93I-bA-tQJ" secondAttribute="bottom" id="9Pq-Gn-YNX"/>
-                            <constraint firstItem="uFG-EE-yKI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="A5F-ad-KQS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uFG-EE-yKI" secondAttribute="trailing" constant="275" id="ExR-Rd-RdV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Odj-50-wHe" secondAttribute="trailing" constant="80" id="Rue-qM-lPi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="93I-bA-tQJ" secondAttribute="trailing" id="cEu-Ub-X1L"/>
                             <constraint firstItem="uIM-kC-6Y6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="14" id="caa-Gt-JWE"/>
                             <constraint firstItem="Odj-50-wHe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="d6I-PB-1X9"/>
                             <constraint firstItem="93I-bA-tQJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="dv6-IZ-WLT"/>
                             <constraint firstItem="93I-bA-tQJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hBE-XB-8NR"/>
-                            <constraint firstItem="uFG-EE-yKI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nxL-w7-VAP"/>
                             <constraint firstItem="uIM-kC-6Y6" firstAttribute="leading" secondItem="Odj-50-wHe" secondAttribute="trailing" constant="16" id="uht-Bx-MPY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uIM-kC-6Y6" secondAttribute="trailing" constant="16" id="wbn-gF-4xg"/>
                             <constraint firstItem="Odj-50-wHe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="zwE-mW-L7X"/>
@@ -182,7 +173,6 @@
                     <navigationItem key="navigationItem" id="mkF-cY-dpk"/>
                     <connections>
                         <outlet property="button" destination="uIM-kC-6Y6" id="n0t-Wf-IZP"/>
-                        <outlet property="counterLabel" destination="uFG-EE-yKI" id="yhr-YR-NcV"/>
                         <outlet property="stopTable" destination="93I-bA-tQJ" id="b13-Sc-a3G"/>
                         <outlet property="textField" destination="Odj-50-wHe" id="ztD-Z5-HAW"/>
                         <segue destination="0Pp-zn-9UP" kind="show" identifier="locationSelected" id="70b-lA-TSG"/>
@@ -337,6 +327,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="q5y-Ka-rvr"/>
+        <segue reference="70b-lA-TSG"/>
     </inferredMetricsTieBreakers>
 </document>
