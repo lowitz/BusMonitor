@@ -23,6 +23,7 @@
 @property (strong, nonatomic) MonitorWrapper *monitorWrapper;
 @property (strong, nonatomic) NSMutableArray<StopLocation*> *favoriteLocations;
 @property (strong, nonatomic) NSMutableArray<Departure*> *departures;
+@property (nonatomic) NCUpdateResult updateResult;
 
 @end
 
@@ -32,6 +33,10 @@
     [super viewDidLoad];
     if (!_monitorWrapper) _monitorWrapper = [[MonitorWrapper alloc] init];
     [[self extensionContext] setWidgetLargestAvailableDisplayMode:NCWidgetDisplayModeExpanded];
+    
+    UIView * separator = [[UIView alloc] initWithFrame:CGRectMake(_departuresTableView.frame.origin.x, _departuresTableView.frame.origin.y, _departuresTableView.frame.size.width, 1)];
+    separator.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
+    [self.view addSubview:separator];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -73,7 +78,11 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_departures count];
+    if ([[self extensionContext] widgetActiveDisplayMode] == NCWidgetDisplayModeCompact) {
+        return 2;
+    } else {
+     return [_departures count];
+    }
 }
 
 #pragma mark - UITableViewDelegate
