@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B504D8EE247A8D9B000C83F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5AC8CB72458CA65001D192F /* Assets.xcassets */; };
 		B525C9192458DEE70052B4E4 /* MonitorWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = B525C9182458DEE70052B4E4 /* MonitorWrapper.mm */; };
 		B54F639B247A5E0700E7BD91 /* MonitorWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = B525C9182458DEE70052B4E4 /* MonitorWrapper.mm */; };
 		B54F639C247A5E0D00E7BD91 /* StopLocation.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5CF3F7E245C46E20075347D /* StopLocation.mm */; };
@@ -403,6 +404,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B504D8EE247A8D9B000C83F6 /* Assets.xcassets in Resources */,
 				B5AC8CEE2458CAAA001D192F /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
