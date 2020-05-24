@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B525C9192458DEE70052B4E4 /* MonitorWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = B525C9182458DEE70052B4E4 /* MonitorWrapper.mm */; };
+		B54F639B247A5E0700E7BD91 /* MonitorWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = B525C9182458DEE70052B4E4 /* MonitorWrapper.mm */; };
+		B54F639C247A5E0D00E7BD91 /* StopLocation.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5CF3F7E245C46E20075347D /* StopLocation.mm */; };
+		B54F639D247A5E1000E7BD91 /* Departure.mm in Sources */ = {isa = PBXBuildFile; fileRef = B56181D92466C37B00AA222E /* Departure.mm */; };
 		B56181DA2466C37B00AA222E /* Departure.mm in Sources */ = {isa = PBXBuildFile; fileRef = B56181D92466C37B00AA222E /* Departure.mm */; };
 		B5723006245F22BF000A04E7 /* LocationDetailsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5723004245F22BE000A04E7 /* LocationDetailsViewController.mm */; };
 		B57C2A982476AFE50047179B /* DepartureCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = B57C2A972476AFE50047179B /* DepartureCell.mm */; };
@@ -444,7 +447,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B54F639D247A5E1000E7BD91 /* Departure.mm in Sources */,
+				B54F639B247A5E0700E7BD91 /* MonitorWrapper.mm in Sources */,
 				B5AC8CEB2458CAAA001D192F /* TodayViewController.m in Sources */,
+				B54F639C247A5E0D00E7BD91 /* StopLocation.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

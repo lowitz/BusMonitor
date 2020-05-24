@@ -9,8 +9,12 @@
 #import "TodayViewController.h"
 #import <NotificationCenter/NotificationCenter.h>
 
+#import "Departure.h"
+#import "MonitorWrapper.h"
+
 @interface TodayViewController () <NCWidgetProviding>
-@property (weak, nonatomic) IBOutlet UILabel *label;
+
+@property (strong, nonatomic) MonitorWrapper *monitorWrapper;
 
 @end
 
@@ -18,16 +22,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    _monitorWrapper = [[MonitorWrapper alloc] init];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
-    if (defaults) {
-        _label.text = (NSString *)[defaults valueForKey:@"name"];
-    }
+
+    // NSUserDefaults *defaults = [[NSUserDefaults standardUserDefaults] initWithSuiteName:@"group.com.lovemowitz.BusMonitor"];
 }
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
