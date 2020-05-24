@@ -63,6 +63,30 @@
     }
 }
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+
+    NSInteger updatedVisibleCellCount = [self numberOfTableRowsToDisplay];
+    NSInteger currentVisibleCellCount = _departuresTableView.visibleCells.count;
+    NSInteger cellCountDifference = updatedVisibleCellCount - currentVisibleCellCount;
+
+    if (cellCountDifference != 0) {
+        [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+            [self->_departuresTableView performBatchUpdates:^ {
+                NSMutableArray<NSIndexPath*> *indexPaths = [[NSMutableArray alloc] init];
+                for (int i = 2; i < 2 + ABS(cellCountDifference); i++) {
+                    [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+                }
+                if (cellCountDifference > 0) {
+                    [self->_departuresTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+                } else {
+                    [self->_departuresTableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+                }
+            } completion:nil];
+        } completion:nil];
+    }
+}
+
 #pragma mark - UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -78,11 +102,7 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if ([[self extensionContext] widgetActiveDisplayMode] == NCWidgetDisplayModeCompact) {
-        return 2;
-    } else {
-     return [_departures count];
-    }
+    return [self numberOfTableRowsToDisplay];
 }
 
 #pragma mark - UITableViewDelegate
@@ -105,6 +125,14 @@
             [self->_departuresTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
         }];
     }];
+}
+
+- (NSInteger)numberOfTableRowsToDisplay {
+    if ([[self extensionContext] widgetActiveDisplayMode] == NCWidgetDisplayModeCompact) {
+        return 2;
+    } else {
+        return MIN([_departures count], 9);
+    }
 }
 
 @end
