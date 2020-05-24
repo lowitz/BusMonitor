@@ -31,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if (!_monitorWrapper) _monitorWrapper = [[MonitorWrapper alloc] init];
+    [[self extensionContext] setWidgetLargestAvailableDisplayMode:NCWidgetDisplayModeExpanded];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -92,6 +93,7 @@
     [_monitorWrapper getAccessToken:^ {
         [self->_monitorWrapper getDepartureTimesForID:[[self->_favoriteLocations objectAtIndex:0] stopID] date:[NSDate date] maxDeparturesPerLine:2 handler:^(NSMutableArray *departures) {
             self->_departures = departures;
+            [self->_departuresTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
         }];
     }];
 }
